@@ -1,23 +1,34 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+    @if(Auth::user()->role === 'admin')
+        <div class="panel panel-success">
+            <h1 class="text-center">Welcome ADMIN!</h1>
+        </div>
+    @endif
 
-                    You are logged in!
-                </div>
+    @if(Auth::user()->role === 'subscriber')
+        <div class="panel panel-success">
+            <div class="panel-heading text-center">
+                <p>Thank you for login!</p>
+            </div>
+            <div class="panel-footer text-center">
+                <p>Please wait for admin approval to become a sales person</p>
+            </div>
+            <div class="panel-body text-center">
+                <a href="visitor" class="btn btn-info">Or, you can enjoy here..</a>
             </div>
         </div>
-    </div>
-</div>
+    @endif
+
+    @if(Auth::user()->role === 'saler')
+        <div class="panel panel-success">
+            <div class="panel-heading text-center">Thank you for login!</div>
+            <div class="panel-footer text-center">
+                You are a sales person
+            </div>
+        </div>
+    @endif
+
 @endsection
