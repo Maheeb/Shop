@@ -3,4 +3,4 @@
 ## About this repository
 
 
-This is online shop made with Laravel for selling goods.
+This is online shop made with Laravel for selling goods... :)
